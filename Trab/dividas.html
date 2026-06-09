@@ -41,7 +41,8 @@
     <script src="sistema.js"></script>
     <script>
         document.getElementById('sidebar-container').innerHTML = menuLateralTemplate;
-        document.getElementById('m-dividas').className = 'active';
+        const dividasElement = document.getElementById('m-dividas');
+        if (dividasElement) dividasElement.classList.add('active');
 
         function salvarDivida() {
             const n = document.getElementById('d-nome').value;
