@@ -32,7 +32,8 @@
     <script src="sistema.js"></script>
     <script>
         document.getElementById('sidebar-container').innerHTML = menuLateralTemplate;
-        document.getElementById('m-lucros').className = 'active';
+        const lucrosElement = document.getElementById('m-lucros');
+        if (lucrosElement) lucrosElement.classList.add('active');
 
         function atualizarTabelasPagina() {
             document.querySelector('#tbl-lucros tbody').innerHTML = db_vendas.map(v => `
