@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lucros - Sistema Mercadinho</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="system">
+        <div class="sidebar" id="sidebar-container"></div>
+
+        <div class="main-container">
+            <div class="header">
+                <h1>Fluxo de Caixa e Lucros</h1>
+                <div class="user-pill">
+                    <i class="fa-solid fa-circle-user"></i> <span id="userName">...</span>
+                    <button onclick="deslogar()" style="border:none; background:none; color:var(--danger); cursor:pointer; font-weight:bold; margin-left:10px">Sair</button>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3><i class="fa-solid fa-sack-dollar" style="color: #059669;"></i> Histórico de Lucro Líquido Real</h3>
+                <table id="tbl-lucros">
+                    <thead><tr><th>Data/Hora</th><th>Produto Vendido</th><th>Valor da Venda</th><th>Lucro Líquido</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="sistema.js"></script>
+    <script>
+        document.getElementById('sidebar-container').innerHTML = menuLateralTemplate;
+        document.getElementById('m-lucros').className = 'active';
+
+        function atualizarTabelasPagina() {
+            document.querySelector('#tbl-lucros tbody').innerHTML = db_vendas.map(v => `
+                <tr>
+                    <td>${v.data}</td>
+                    <td>${v.nome}</td>
+                    <td>R$ ${parseFloat(v.valorVenda).toFixed(2)}</td>
+                    <td style="color:#059669; font-weight:bold">R$ ${parseFloat(v.lucroLiquido).toFixed(2)}</td>
+                </tr>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
