@@ -40,7 +40,7 @@
     <script src="sistema.js"></script>
     <script>
         document.getElementById('sidebar-container').innerHTML = menuLateralTemplate;
-        document.getElementById('m-dash').className = 'active';
+        document.getElementById('m-dash').classList.add('active');
 
         function atualizarTabelasPagina() {
             if(cargoLogado === "Administrador") {
