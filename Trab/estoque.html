@@ -50,7 +50,8 @@
     <script src="sistema.js"></script>
     <script>
         document.getElementById('sidebar-container').innerHTML = menuLateralTemplate;
-        document.getElementById('m-estoque').className = 'active';
+        const estoqueElement = document.getElementById('m-estoque');
+        if (estoqueElement) estoqueElement.classList.add('active');
 
         function salvarProduto() {
             const n = document.getElementById('p-nome').value;
