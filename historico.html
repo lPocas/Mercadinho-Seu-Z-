@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico - Sistema Mercadinho</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="system">
+        <div class="sidebar" id="sidebar-container"></div>
+
+        <div class="main-container">
+            <div class="header">
+                <h1>Auditoria e Logs</h1>
+                <div class="user-pill">
+                    <i class="fa-solid fa-circle-user"></i> <span id="userName">...</span>
+                    <button onclick="deslogar()" style="border:none; background:none; color:var(--danger); cursor:pointer; font-weight:bold; margin-left:10px">Sair</button>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3><i class="fa-solid fa-eye"></i> Monitoramento de Ações Recentes</h3>
+                <table id="tbl-logs">
+                    <thead><tr><th>Data/Hora</th><th>Operador</th><th>Ação Realizada</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="sistema.js"></script>
+    <script>
+        document.getElementById('sidebar-container').innerHTML = menuLateralTemplate;
+        const logsElement = document.getElementById('m-logs');
+        if (logsElement) logsElement.classList.add('active');
+
+        function atualizarTabelasPagina() {
+            const ehFuncionario = (cargoLogado !== "Administrador");
+
+            document.querySelector('#tbl-logs tbody').innerHTML = db_logs.slice(0, 30).map(l => {
+                let acaoExibida = l.acao;
+                if (ehFuncionario && acaoExibida.includes("Dívida nova:")) {
+                    acaoExibida = "Nova movimentação financeira realizada";
+                }
+                return `
+                    <tr><td>${l.data}</td><td><b>${l.user}</b></td><td>${acaoExibida}</td></tr>
+                `;
+            }).join('');
+        }
+    </script>
+</body>
+</html>

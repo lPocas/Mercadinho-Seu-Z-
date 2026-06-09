@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dívidas - Sistema Mercadinho</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="system">
+        <div class="sidebar" id="sidebar-container"></div>
+
+        <div class="main-container">
+            <div class="header">
+                <h1>Controle de Fiado</h1>
+                <div class="user-pill">
+                    <i class="fa-solid fa-circle-user"></i> <span id="userName">...</span>
+                    <button onclick="deslogar()" style="border:none; background:none; color:var(--danger); cursor:pointer; font-weight:bold; margin-left:10px">Sair</button>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3><i class="fa-solid fa-user-tag"></i> Registrar Novo "Fiado"</h3>
+                <div class="form-grid">
+                    <input type="text" id="d-nome" placeholder="Nome do Cliente">
+                    <input type="number" id="d-valor" placeholder="Valor devido (R$)">
+                </div>
+                <button class="btn btn-blue" onclick="salvarDivida()">Salvar no Caderninho</button>
+            </div>
+
+            <div class="box">
+                <h3>Clientes Devedores</h3>
+                <table id="tbl-dividas">
+                    <thead><tr><th>Cliente</th><th>Dívida Atual</th><th>Ação</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="sistema.js"></script>
+    <script>
+        document.getElementById('sidebar-container').innerHTML = menuLateralTemplate;
+        const dividasElement = document.getElementById('m-dividas');
+        if (dividasElement) dividasElement.classList.add('active');
+
+        function salvarDivida() {
+            const n = document.getElementById('d-nome').value;
+            const v = parseFloat(document.getElementById('d-valor').value) || 0;
+            if(!n || v <= 0) return alert('Campos inválidos!');
+
+            db_dividas.push({ id: Date.now(), nome: n, valor: v });
+            localStorage.setItem('m_dividas', JSON.stringify(db_dividas));
+            addLog(`Dívida nova: ${n} (R$ ${v.toFixed(2)})`);
+            
+            document.getElementById('d-nome').value = '';
+            document.getElementById('d-valor').value = '';
+            atualizarTabelasPagina();
+        }
+
+        function pagar(id) {
+            db_dividas = db_dividas.filter(x => x.id !== id);
+            localStorage.setItem('m_dividas', JSON.stringify(db_dividas));
+            addLog('Recebeu pagamento de dívida');
+            atualizarTabelasPagina();
+        }
+
+        function atualizarTabelasPagina() {
+            document.querySelector('#tbl-dividas tbody').innerHTML = db_dividas.map(d => `
+                <tr>
+                    <td>${d.nome}</td>
+                    <td style="color:red; font-weight:bold">R$ ${parseFloat(d.valor).toFixed(2)}</td>
+                    <td><button class="btn" style="background:#10b981; color:white; padding:5px 10px" onclick="pagar(${d.id})">Quitar</button></td>
+                </tr>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
