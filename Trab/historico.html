@@ -32,7 +32,8 @@
     <script src="sistema.js"></script>
     <script>
         document.getElementById('sidebar-container').innerHTML = menuLateralTemplate;
-        document.getElementById('m-logs').className = 'active';
+        const logsElement = document.getElementById('m-logs');
+        if (logsElement) logsElement.classList.add('active');
 
         function atualizarTabelasPagina() {
             const ehFuncionario = (cargoLogado !== "Administrador");
