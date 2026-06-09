@@ -1,0 +1,77 @@
+:root {
+    --bg-body: #f1f5f9;
+    --sidebar-color: #ffffff;
+    --primary-text: #1e293b;
+    --secondary-text: #64748b;
+    --accent-color: #2563eb;
+    --border-light: #e2e8f0;
+    --danger: #ef4444;
+    --success: #10b981;
+}
+
+body.mode-adm {
+    --accent-color: #1e1b4b;
+    --bg-body: #f8fafc;
+}
+
+body.mode-funci {
+    --accent-color: #0284c7;
+    --bg-body: #f0fdfa;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background: var(--bg-body); color: var(--primary-text); transition: background 0.3s; }
+
+/* --- LOGIN --- */
+.login-screen {
+    width: 100%; height: 100vh; background: #cbd5e1;
+    display: flex; justify-content: center; align-items: center;
+}
+.login-box {
+    width: 380px; background: white; padding: 40px; border-radius: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); text-align: center;
+}
+.login-logo { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 20px; object-fit: cover; border: 4px solid var(--bg-body); }
+.login-box h1 { margin-bottom: 25px; font-size: 24px; }
+.input-group { text-align: left; margin-bottom: 15px; }
+.input-group label { display: block; font-size: 13px; color: var(--secondary-text); margin-bottom: 5px; }
+.input-group input { width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: 10px; outline: none; background: #f8fafc; }
+.login-btn { width: 100%; padding: 14px; background: #1a2e35; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
+.login-btn:hover { background: #000; }
+
+/* --- ESTRUTURA --- */
+.system { display: flex; width: 100%; min-height: 100vh; }
+.sidebar {
+    width: 280px; height: 100vh; background: var(--sidebar-color);
+    border-right: 1px solid var(--border-light); position: fixed; top: 0; left: 0; padding: 20px; z-index: 10;
+}
+.brand { display: flex; flex-direction: column; align-items: center; padding-bottom: 30px; border-bottom: 1px solid var(--border-light); margin-bottom: 20px; }
+.brand img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; }
+.brand h2 { font-size: 18px; }
+
+.menu a {
+    display: flex; align-items: center; gap: 12px; color: var(--secondary-text);
+    text-transform: none; text-decoration: none; padding: 14px; border-radius: 12px; margin-bottom: 5px; cursor: pointer; transition: 0.2s;
+}
+.menu a i { width: 20px; font-size: 18px; }
+.menu a:hover, .menu a.active { background: #f1f5f9; color: var(--accent-color); font-weight: 600; }
+
+.main-container { margin-left: 280px; padding: 40px; flex-grow: 1; min-height: 100vh; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; }
+.user-pill { background: white; padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border-light); font-size: 14px; display: flex; align-items: center; gap: 10px; }
+
+.box { background: white; padding: 30px; border-radius: 20px; border: 1px solid var(--border-light); margin-bottom: 25px; }
+.box h3 { margin-bottom: 20px; font-size: 20px; display: flex; align-items: center; gap: 10px; color: var(--accent-color); }
+
+/* COMPONENTES */
+table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+table th { text-align: left; padding: 15px; background: #f8fafc; color: var(--secondary-text); font-size: 13px; border-bottom: 2px solid var(--bg-body); }
+table td { padding: 15px; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px; }
+.form-group label { display: block; font-size: 12px; margin-bottom: 5px; color: var(--secondary-text); }
+.form-grid input { width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: 8px; outline: none; }
+.btn { padding: 12px 25px; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.2s; }
+.btn-blue { background: var(--accent-color); color: white; }
+.badge { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; }
+.badge-red { background: #fee2e2; color: var(--danger); }
+.badge-green { background: #dcfce7; color: var(--success); }
