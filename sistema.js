@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('welcomeName'))
         document.getElementById('welcomeName').innerText = cargoLogado;
 
-    // 📊 página ativa
+   
     if (typeof atualizarTabelasPagina === "function") {
         atualizarTabelasPagina();
     }
@@ -181,10 +181,6 @@ function atualizarLucrosPeriodo() {
         document.getElementById('lucroTotal').innerText = `R$ ${total.toFixed(2)}`;
 }
 
-
-// =======================
-// 🧭 MENU
-// =======================
 
 const menuLateralTemplate = `
     <div class="brand">
