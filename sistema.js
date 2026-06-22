@@ -7,9 +7,7 @@ let usuarioLogado = localStorage.getItem('m_usuario_ativo') || "";
 let cargoLogado = localStorage.getItem('m_cargo_ativo') || "";
 
 
-// =======================
-// 🔐 SISTEMA BASE
-// =======================
+
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -18,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // 🎨 tema por cargo
+    
     if (cargoLogado === "Administrador") {
         document.body.className = 'mode-adm';
     } else if (cargoLogado === "Funcionário") {
@@ -33,7 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 👤 nome na tela
+   
     if (document.getElementById('userName'))
         document.getElementById('userName').innerText = cargoLogado;
 
@@ -47,9 +45,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// =======================
-// 🔑 LOGIN
-// =======================
 
 function logar() {
     const u = document.getElementById('user').value;
@@ -71,9 +66,6 @@ function logar() {
 }
 
 
-// =======================
-// 🚪 LOGOUT
-// =======================
 
 function deslogar() {
     localStorage.removeItem('m_usuario_ativo');
@@ -82,9 +74,7 @@ function deslogar() {
 }
 
 
-// =======================
-// 🧾 LOGS
-// =======================
+
 
 function addLog(txt) {
     db_logs.unshift({
@@ -98,9 +88,6 @@ function addLog(txt) {
 }
 
 
-// =======================
-// 💰 PRECIFICAÇÃO
-// =======================
 
 function calcularPrecoVenda() {
 
@@ -137,9 +124,6 @@ function calcularPrecoVenda() {
 }
 
 
-// =======================
-// 📊 RESUMO GERAL
-// =======================
 
 function calcularResumoLucros() {
 
@@ -154,9 +138,6 @@ function calcularResumoLucros() {
 }
 
 
-// =======================
-// 📅 LUCRO POR DIA
-// =======================
 
 function lucroPorDia() {
 
@@ -170,9 +151,6 @@ function lucroPorDia() {
 }
 
 
-// =======================
-// 📆 LUCRO POR MÊS
-// =======================
 
 function lucroPorMes() {
 
@@ -186,9 +164,6 @@ function lucroPorMes() {
 }
 
 
-// =======================
-// 📈 ATUALIZAR TELA LUCROS
-// =======================
 
 function atualizarLucrosPeriodo() {
 
