@@ -22,7 +22,7 @@ body.mode-funci {
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 body { background: var(--bg-body); color: var(--primary-text); transition: background 0.3s; }
 
-/* --- LOGIN --- */
+
 .login-screen {
     width: 100%; height: 100vh; background: #cbd5e1;
     display: flex; justify-content: center; align-items: center;
@@ -39,7 +39,7 @@ body { background: var(--bg-body); color: var(--primary-text); transition: backg
 .login-btn { width: 100%; padding: 14px; background: #1a2e35; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
 .login-btn:hover { background: #000; }
 
-/* --- ESTRUTURA --- */
+
 .system { display: flex; width: 100%; min-height: 100vh; }
 .sidebar {
     width: 280px; height: 100vh; background: var(--sidebar-color);
@@ -63,7 +63,7 @@ body { background: var(--bg-body); color: var(--primary-text); transition: backg
 .box { background: white; padding: 30px; border-radius: 20px; border: 1px solid var(--border-light); margin-bottom: 25px; }
 .box h3 { margin-bottom: 20px; font-size: 20px; display: flex; align-items: center; gap: 10px; color: var(--accent-color); }
 
-/* COMPONENTES */
+
 table { width: 100%; border-collapse: collapse; margin-top: 10px; }
 table th { text-align: left; padding: 15px; background: #f8fafc; color: var(--secondary-text); font-size: 13px; border-bottom: 2px solid var(--bg-body); }
 table td { padding: 15px; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
